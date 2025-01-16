@@ -32,7 +32,7 @@ const Register = () => {
       setError("");
 
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/auth/register`,
+        "https://expense-calculator-server-one.vercel.app/api/auth/register",
         {
           name: formData.name,
           email: formData.email,

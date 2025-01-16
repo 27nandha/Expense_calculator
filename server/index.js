@@ -12,9 +12,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const corsOptions = {
-  origin: process.env.FRONTEND_URL, // Only allow requests from this URL
+  origin: [
+    "https://expense-calculator-1u1nkbzbu-27nandhas-projects.vercel.app",
+  ], // Only allow requests from this URL
   methods: "GET,POST,PUT,DELETE", // Specify allowed HTTP methods
-  allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
+  credentials: true, // Specify allowed headers
 };
 
 app.use(cors(corsOptions));

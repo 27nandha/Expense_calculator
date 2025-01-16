@@ -22,7 +22,7 @@ const ExpenseTracker = () => {
   const fetchExpenses = async () => {
     try {
       const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/expenses`,
+        "https://expense-calculator-server-one.vercel.app/api/expenses",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
