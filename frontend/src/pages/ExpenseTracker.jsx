@@ -21,9 +21,12 @@ const ExpenseTracker = () => {
 
   const fetchExpenses = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/expenses", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/expenses`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setExpenses(res.data);
     } catch (err) {
       console.error("Failed to fetch expenses:", err.response?.data?.message);
@@ -36,7 +39,7 @@ const ExpenseTracker = () => {
       if (isEditing) {
         // Update expense
         const res = await axios.put(
-          `http://localhost:5000/api/expenses/${editId}`,
+          `${process.env.REACT_APP_API_URL}/api/expenses/${editId}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -48,7 +51,7 @@ const ExpenseTracker = () => {
       } else {
         // Add new expense
         const res = await axios.post(
-          "http://localhost:5000/api/expenses/add",
+          `${process.env.REACT_APP_API_URL}/api/expenses/add`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -74,9 +77,12 @@ const ExpenseTracker = () => {
     if (!window.confirm("Are you sure you want to delete this expense?"))
       return;
     try {
-      await axios.delete(`http://localhost:5000/api/expenses/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/expenses/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setExpenses((prev) => prev.filter((expense) => expense._id !== id));
     } catch (err) {
       console.error("Failed to delete expense:", err.response?.data?.message);
