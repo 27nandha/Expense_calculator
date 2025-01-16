@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import expenseRoutes from "./routes/expenses.js";
+import config from "./config/config.js";
 
 dotenv.config();
 
@@ -26,6 +27,11 @@ mongoose
 // Routes
 app.get("/", (req, res) => {
   res.send("API is running...");
+});
+
+app.get("/verification-link", (req, res) => {
+  const verificationLink = `${config.FRONTEND_URL}/verify-email?token=sampleToken`;
+  res.send(`Verification link: ${verificationLink}`);
 });
 
 // Start the Server
