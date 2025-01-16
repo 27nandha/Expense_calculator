@@ -4,7 +4,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import expenseRoutes from "./routes/expenses.js";
-import config from "./config/config.js";
 
 dotenv.config();
 
