@@ -39,7 +39,7 @@ const ExpenseTracker = () => {
       if (isEditing) {
         // Update expense
         const res = await axios.put(
-          `${process.env.REACT_APP_API_URL}/api/expenses/${editId}`,
+          `https://expense-calculator-server-one.vercel.app/api/expenses/${editId}`,
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -51,7 +51,7 @@ const ExpenseTracker = () => {
       } else {
         // Add new expense
         const res = await axios.post(
-          `${process.env.REACT_APP_API_URL}/api/expenses/add`,
+          "https://expense-calculator-server-one.vercel.app/api/expenses/add",
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -78,7 +78,7 @@ const ExpenseTracker = () => {
       return;
     try {
       await axios.delete(
-        `${process.env.REACT_APP_API_URL}/api/expenses/${id}`,
+        "https://expense-calculator-server-one.vercel.app/api/expenses/${id}",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
