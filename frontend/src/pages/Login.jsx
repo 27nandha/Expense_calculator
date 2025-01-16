@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Navigate } from "react-router-dom";
 import "../auth.css";
+import dotenv from "dotenv";
+
+// Load environment variables
+dotenv.config();
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
