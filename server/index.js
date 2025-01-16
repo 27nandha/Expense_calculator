@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const corsOptions = {
-  origin: config.FRONTEND_URL, // Only allow requests from this URL
+  origin: process.env.FRONTEND_URL, // Only allow requests from this URL
   methods: "GET,POST,PUT,DELETE", // Specify allowed HTTP methods
   allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
 };
