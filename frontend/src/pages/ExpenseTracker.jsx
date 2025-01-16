@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
-import dotenv from "dotenv";
-
-// Load environment variables
-dotenv.config();
 
 const ExpenseTracker = () => {
   const [formData, setFormData] = useState({

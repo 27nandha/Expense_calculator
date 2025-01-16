@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import "../auth.css";
-import dotenv from "dotenv";
-
-// Load environment variables
-dotenv.config();
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [redirect, setRedirect] = useState(false);
+
+  // Verify that the API URL is being read correctly
+  console.log("API URL:", process.env.REACT_APP_API_URL);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,7 +27,9 @@ const Login = () => {
       alert("Login successful!");
       setRedirect(true);
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed");
+      setError(
+        err.response?.data?.message || "Login failed. Please try again."
+      );
     }
   };
 
@@ -60,7 +61,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       <p>
-        Don't have an account? <a href="/register">Register here</a>.
+        Don't have an account? <Link to="/register">Register here</Link>.
       </p>
     </div>
   );
