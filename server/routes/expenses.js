@@ -52,16 +52,17 @@ router.get("/", authenticate, async (req, res) => {
 });
 
 // Update an expense
+// Update an expense
 router.put("/:id", authenticate, async (req, res) => {
   try {
     const { title, amount, category } = req.body;
     const expense = await Expense.findOneAndUpdate(
       { _id: req.params.id, userId: req.userId },
       { title, amount, category },
-      { new: true }
+      { new: true } // This ensures the updated document is returned
     );
     if (!expense) return res.status(404).json({ message: "Expense not found" });
-    res.json(expense);
+    res.json(expense); // Return the updated expense
   } catch (err) {
     res
       .status(500)

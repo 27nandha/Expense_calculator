@@ -43,8 +43,9 @@ const ExpenseTracker = () => {
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        setExpenses((prev) =>
-          prev.map((expense) => (expense._id === editId ? res.data : expense))
+        setExpenses(
+          (prev) =>
+            prev.map((expense) => (expense._id === editId ? res.data : expense)) // Correct mapping here
         );
         setIsEditing(false);
         setEditId(null);
@@ -55,9 +56,9 @@ const ExpenseTracker = () => {
           formData,
           { headers: { Authorization: `Bearer ${token}` } }
         );
-        setExpenses([res.data.expense, ...expenses]);
+        setExpenses([res.data.expense, ...expenses]); // Restructure data to add the new expense
       }
-      setFormData({ title: "", amount: "", category: "" });
+      setFormData({ title: "", amount: "", category: "" }); // Clear form
     } catch (err) {
       console.error("Failed to save expense:", err.response?.data?.message);
     }
@@ -78,7 +79,7 @@ const ExpenseTracker = () => {
       return;
     try {
       await axios.delete(
-        "https://expense-calculator-server-one.vercel.app/api/expenses/${id}",
+        `https://expense-calculator-server-one.vercel.app/api/expenses/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
