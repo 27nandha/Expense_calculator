@@ -12,7 +12,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: config.FRONTEND_URL, // Only allow requests from this URL
+  methods: "GET,POST,PUT,DELETE", // Specify allowed HTTP methods
+  allowedHeaders: "Content-Type, Authorization", // Specify allowed headers
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -27,11 +33,6 @@ mongoose
 // Routes
 app.get("/", (req, res) => {
   res.send("API is running...");
-});
-
-app.get("/verification-link", (req, res) => {
-  const verificationLink = `${config.FRONTEND_URL}/verify-email?token=sampleToken`;
-  res.send(`Verification link: ${verificationLink}`);
 });
 
 // Start the Server

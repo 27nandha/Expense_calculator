@@ -2,7 +2,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import DashBoard from "./pages/DashBoard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ExpenseTracker from "./pages/ExpenseTracker";
 
