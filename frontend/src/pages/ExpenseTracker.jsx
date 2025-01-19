@@ -107,7 +107,7 @@ const ExpenseTracker = () => {
           marginBottom: "1rem",
         }}
       >
-        <h1>Expense Tracker</h1>
+        <h1>Ramya Expense Tracker</h1>
         <button
           onClick={handleLogout}
           style={{
